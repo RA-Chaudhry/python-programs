@@ -1,0 +1,14 @@
+import random
+number=random.randint(1,9)
+print(number)
+guess=0
+while guess!=number:
+    guess=int(input("enter a number"))
+    if guess<number:
+        print("guess hiegher number")
+    elif guess>number:
+        print("guess lower number")
+    elif guess==number: 
+        print("you win ")   
+    else:
+        print("try again")
