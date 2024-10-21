@@ -1,0 +1,48 @@
+def main():
+    while True:
+        option = input('Click on option (E, D, Exit): ').lower()
+        
+        if option == "e":
+            user_input = input("Enter value to encode: ")
+            shift = int(input('Shift: '))
+            encoded_name = encoder(user_input, shift)
+            print(f"Encoded name: {encoded_name}")
+        
+        elif option == "d":
+            user_input = input("Enter value to decode: ")
+            shift = int(input('Shift: '))
+            decoded_name = decoder(user_input, shift)
+            print(f"Decoded name: {decoded_name}")
+        
+        elif option == "exit":
+            print("Exiting the program!")
+            break
+        
+        else:
+            print("Invalid option, please try again.")
+
+def alpha():
+    return ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+def encoder(user_input, shift):
+    name = ''
+    alphabet = alpha()
+    for i in user_input:
+        if i in alphabet: 
+            index = alphabet.index(i)
+            new_index = (index + shift) % 26
+            name+=alphabet[new_index]
+    return name
+
+def decoder(name, shift):
+    result = ''
+    alphabet = alpha()
+    for i in name:
+        if i in alphabet:
+            index = alphabet.index(i)
+            new_index = (index - shift) % 26 
+            result+=alphabet[new_index]
+    return result
+
+if __name__ == "__main__":
+    main()
